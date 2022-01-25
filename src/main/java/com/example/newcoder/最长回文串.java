@@ -1,4 +1,4 @@
-package com.example.leetcode;
+package com.example.newcoder;
 
 public class 最长回文串 {
 

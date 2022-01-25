@@ -1,8 +1,13 @@
-package com.example.leetcode;
+package com.example.newcoder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * https://www.nowcoder.com/practice/345e2ed5f81d4017bbb8cc6055b0b711
+ * 数组先排序
+ * 固定第一个数，双指针首位便利
+ */
 public class threeSum {
 
     public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
