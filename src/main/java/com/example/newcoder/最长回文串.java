@@ -4,25 +4,24 @@ public class 最长回文串 {
 
     public int getLongestPalindrome (String A) {
         // write code here
-
         int max = 0;
-
         for (int i = 0; i < A.length(); i++) {
-            isPalindrome(A, i, A.length()-1);
+            int tmpMax = Math.max(isPalindrome(A, i, i), isPalindrome(A, i, i));
+            max = Math.max(max, tmpMax);
         }
-        return 1;
+        return max;
     }
 
-    public boolean isPalindrome(String A, int startIndex, int endIndex) {
-        int i = 0, j = A.length() - 1;
-        while (startIndex < endIndex) {
-            if (A.charAt(i) != A.charAt(j)) {
-                return false;
+    public int isPalindrome(String A, int startIndex, int endIndex) {
+        while (startIndex >= 0 || endIndex < A.length()) {
+            if (A.charAt(startIndex) == A.charAt(endIndex)) {
+                startIndex --;
+                endIndex ++;
+            } else {
+                break;
             }
-            i ++;
-            j --;
         }
-        return true;
+        return endIndex - startIndex - 2 + 1;
     }
 
     public static void main(String[] args) {

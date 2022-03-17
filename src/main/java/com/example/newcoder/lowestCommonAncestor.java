@@ -4,12 +4,46 @@ package com.example.newcoder;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.util.LinkedList;
+import java.util.*;
 
+/**
+ * NC102 在二叉树中找到两个节点的最近公共祖先
+ * https://www.nowcoder.com/practice/e0cc33a83afe4530bcec46eba3325116
+ */
 public class lowestCommonAncestor {
 
     
     public int lowestCommonAncestor (TreeNode root, int o1, int o2) {
+
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(root.val, Integer.MAX_VALUE);
+
+        while (!map.containsKey(o1) || !map.containsKey(o2)) {
+            TreeNode node = queue.poll();
+            if (node.left != null) {
+                queue.offer(node.left);
+                map.put(node.left.val, node.val);
+            }
+            if (node.right != null) {
+                queue.offer(node.right);
+                map.put(node.right.val, node.val);
+            }
+        }
+
+        List<Integer> set = new LinkedList<>();
+        while (map.containsKey(o1)) {
+            Integer v = map.get(o1);
+            set.add(v);
+            o1 = v;
+        }
+
+        for (Integer v : set) {
+
+        }
+
         return 0;
     }
     
@@ -50,7 +84,7 @@ public class lowestCommonAncestor {
         TreeNode root = new TreeNode(5, treeNode4, treeNode8);
 
         LinkedList<Integer> linkedList = new LinkedList<>();
-        new lowestCommonAncestor().search(root, 7, linkedList);
+        new lowestCommonAncestor().lowestCommonAncestor(root, 7, 5);
         System.out.println(linkedList);
     }
     
